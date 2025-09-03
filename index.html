@@ -15,15 +15,16 @@
         }
         
         body {
-            background: linear-gradient(-45deg, #6e8efb, #a777e3, #23a6d5, #23d5ab);
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
             background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
             color: #fff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
-            animation: gradient 15s ease infinite;
+            overflow: hidden;
+            perspective: 1000px;
         }
         
         @keyframes gradient {
@@ -33,78 +34,92 @@
         }
         
         .container {
-            max-width: 900px;
+            max-width: 800px;
             width: 90%;
             text-align: center;
             padding: 50px 30px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
             border-radius: 25px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
             position: relative;
-            overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 10;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg) rotateX(0deg);
+            transition: transform 0.5s ease;
         }
         
         .logo {
             font-family: 'Raleway', sans-serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 900;
             margin-bottom: 20px;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            color: #e0e0e0;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.5);
         }
         
         .logo span {
-            color: #f0f0f0;
-            font-weight: 700;
+            color: #fdeff9;
         }
 
         h1 {
             font-family: 'Raleway', sans-serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 15px;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: #fff;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.3);
         }
         
         p.tagline {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            color: #c0c0c0;
         }
         
         #countdown {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            transform-style: preserve-3d;
         }
         
         .time-unit {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px 20px;
-            border-radius: 10px;
-            min-width: 100px;
-            transition: transform 0.3s ease;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 120px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            transform: translateZ(20px);
         }
 
         .time-unit:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) translateZ(30px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         
         .time-unit span {
             display: block;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
         }
+
+        #days-text { color: #ee7752; }
+        #hours-text { color: #e73c7e; }
+        #minutes-text { color: #23a6d5; }
+        #seconds-text { color: #23d5ab; }
         
         .time-unit p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
+            letter-spacing: 1.5px;
+            opacity: 0.7;
         }
         
         .subscription-form {
@@ -112,93 +127,99 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            transform: translateZ(40px);
         }
         
         .subscription-form input {
-            width: 300px;
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            width: 350px;
+            padding: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
             color: #fff;
-            font-size: 1rem;
+            font-size: 1.1rem;
             outline: none;
             transition: all 0.3s ease;
         }
         
         .subscription-form input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.5);
         }
 
         .subscription-form input:focus {
-            border-color: #fff;
-            background: rgba(255, 255, 255, 0.2);
+            border-color: #82aaff;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 15px rgba(130, 170, 255, 0.5);
         }
         
         .subscription-form button {
-            padding: 15px 30px;
+            padding: 18px 35px;
             border: none;
-            background: #fff;
-            color: #6e8efb;
-            border-radius: 8px;
-            font-size: 1rem;
+            background: linear-gradient(45deg, #e73c7e, #ee7752);
+            color: #fff;
+            border-radius: 10px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(90, 125, 224, 0.4);
         }
         
         .subscription-form button:hover {
-            background: #f0f0f0;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: linear-gradient(45deg, #ef5a91, #f08a6a);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 60, 126, 0.6);
         }
         
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 30px;
+            transform: translateZ(30px);
         }
         
         .social-icons a {
             color: #fff;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             transition: all 0.3s ease;
             text-decoration: none;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
         }
         
         .social-icons a:hover {
-            color: #a777e3;
-            transform: scale(1.2) rotate(10deg);
+            color: #82aaff;
+            transform: scale(1.3) rotate(15deg);
+            text-shadow: 0 0 20px #82aaff;
         }
 
-        .particles {
+        #particles-js {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            z-index: -1;
             pointer-events: none;
         }
 
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             p.tagline {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             #countdown {
                 flex-wrap: wrap;
                 gap: 15px;
             }
             .time-unit {
-                min-width: 80px;
-                padding: 10px 15px;
+                min-width: 100px;
+                padding: 15px;
             }
             .time-unit span {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             .subscription-form {
                 flex-direction: column;
@@ -210,22 +231,22 @@
 
         @media (max-width: 480px) {
             .container {
-                padding: 40px 20px;
+                padding: 30px 15px;
             }
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             .logo {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             #countdown {
                 gap: 10px;
             }
             .time-unit {
-                min-width: 70px;
+                min-width: 80px;
             }
             .time-unit span {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
         }
         
@@ -249,30 +270,30 @@
 
         .modal-content h2 {
             font-family: 'Raleway', sans-serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 15px;
-            color: #6e8efb;
+            color: #5a7de0;
         }
 
         .modal-content p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 25px;
         }
 
         .close-button {
-            padding: 10px 25px;
+            padding: 12px 30px;
             border: none;
-            background: #6e8efb;
+            background: #5a7de0;
             color: #fff;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s ease;
         }
 
         .close-button:hover {
-            background: #5a7de0;
+            background: #4a6bbf;
         }
 
         .modal-overlay {
@@ -290,7 +311,7 @@
 <body>
     <canvas class="particles" id="particles-js"></canvas>
     <div class="container">
-        <div class="logo"> <span></span></div>
+        <div class="logo">DigitalShop<span>.in</span></div>
         <h1>DigitalShop.in – Coming Soon</h1>
         <p class="tagline">Your one-stop digital marketplace for AI tools, courses, and templates.</p>
         
@@ -359,6 +380,14 @@
             }
         }, 1000);
 
+        // 3D effect on mouse move
+        const container = document.querySelector('.container');
+        document.addEventListener('mousemove', (e) => {
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
         // Particle.js script
         const canvas = document.getElementById('particles-js');
         const ctx = canvas.getContext('2d');
@@ -403,7 +432,8 @@
                 let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
                 let directionX = (Math.random() * .4) - .2;
                 let directionY = (Math.random() * .4) - .2;
-                let color = 'rgba(255,255,255,0.3)';
+                const colors = ['#ee7752', '#e73c7e', '#23a6d5', '#23d5ab'];
+                let color = colors[Math.floor(Math.random() * colors.length)];
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
         }
